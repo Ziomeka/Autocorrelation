@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="jquery.jqplot.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+
+    <div class='container'>
+        <h1>Data processing online tool - beta</h1>
+        <p>This site was developed during research about noise reduction methods while studying at Faculty of Electrical Engineering of the Warsaw University of Technology. I started with plot drawing for uploaded or sample data. The goal is to find periodicity
+            using autocorrelation and use it to smooth data with average.</p>
+    </div>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-3'>
+                <h2>Data input</h2>
+                <h3>Data from file</h3>
+                <form>
+                    <div class="form-group">
+                        Please use csv file.<br>
+                        <label for="fileInput" class="btn btn-info">
+                            <input type="file" id="fileInput" style="display:none;">
+                            Choose file
+                        </label>
+                    </div>
+                </form>
+                <h3>Use sample data</h3>
+                <form>
+                    <label for="sampleFile"> Choose data</label>
+                    <select name="sampleFiles" id="sampleFileDropDown">
+                        <option value="officetemp" selected>officetemp</option>
+                        <option value="random">random</option>
+                      </select>
+                    <div id="sampleFile" class="btn btn-info"> Use sample data </div>
+                </form>
+                <br>
+                <h3>File info</h3>
+                <span id="upload-file-info">No file loaded</span>
+                <form style="display:none" id="lag">
+                    <label for='lag'>Specify lag in samples:</label>
+                    <input type="number" name="lag" id="lagValue">
+                </form>
+                <br>
+                <button type="button" class="btn btn-primary" id="run" disabled> RUN </button>
+            </div>
+            <div class='col-md-9'>
+                <h2>Output</h2>
+                <div id='chart1'></div>
+                <div id='chart2'></div>
+                <div class="button-reset btn btn-primary" style="display:none"> Reset zooms</div>
+                <div id="averaging" style="display:none">
+                    <br>
+                    <h3>Averaging:</h3>
+                    <form>
+                        <label for='step'>Specify averaging step in samples</label>
+                        <input type="number" name="step" id="stepValue" default="1">
+                    </form>
+                    <button type="button" class="btn btn-primary" id="runAvg"> Get Average </button>
+                    <div id='chart3'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="changeBrowser">
+        <h1> Your browser doesn't support webworkers or filereadera API. Pleas use other browser (Chrome or Firefox)</h1>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="plugins/jqplot.canvasTextRenderer.js"></script>
+    <script type="text/javascript" src="plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+    <script type="text/javascript" src="plugins/jqplot.dateAxisRenderer.js"></script>
+    <script type="text/javascript" src="plugins/jqplot.cursor.js"></script>
+    <script type="text/javascript" src="plugins/jqplot.highlighter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>
